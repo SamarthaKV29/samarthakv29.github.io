@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Line</title>
+	<style type="text/css">
+
+
+	   body{
+	   color:#cee0d0;
+	   background: #136a8a; /* fallback for old browsers */
+	   background: -webkit-linear-gradient(to left, #136a8a , #267871); /* Chrome 10-25, Safari 5.1-6 */
+	   background: linear-gradient(to left, #136a8a , #267871); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	   }
+
+	   header{
+
+	   color: white;
+	   font-size:3em;
+	   }
+	   #Inputs{
+	   text-align:justify;
+	   width:200px;
+	   font-size: 1.2em;
+		 padding:10px;
+	   }
+	   #Inputs .heading a{
+	       font-size: 10px;
+	   }
+	   input{
+	       width:50px;
+	   }
+	   .heading{
+	      text-align:center;
+	      font-size:2em;
+
+	   }
+	   #myCanvas{
+	       background-color: #eee;
+	       margin-left: 50px;
+	       box-shadow:1px 1px 5px 1px black;
+	   }
+	   ul{
+	      list-style: none;
+
+	   }
+		 ul li{
+			 padding: 5px;
+		 }
+		 ul li input{
+			 font-weight: bold;
+			 background-color: #f1f1f1;
+			 color: #012222;
+			 border:solid thin white;
+			 font-size: 14px;
+		 }
+
+	   section{
+	      float:left;
+	   }
+		 div.outer{
+			 margin:auto;
+			 width:800px;
+		 }
+		 #Clear{
+			 font-size: 14px;
+			 font-weight:bold;
+		 }
+		 #back{
+			 text-decoration: none;
+			 background-color: #A2D1A1;
+			 padding: 4px;
+			 color: black;
+			 border:outset medium grey;
+		 }
+		 #back:hover{
+			 color:red;
+		 }
+
+	</style>
+</head>
+
+<body>
+
+	<div class="outer">
+		<p class="heading"><u>Drawing a Line</u></p>
+		<a id="back" href="index.html" style="margin-right:100px; font-weight:bold;">Back</a>
+		<br>
+
+
+		<section id="Inputs">
+			<p><span style="color:#31311;text-shadow:0px 0px 3px black"><i><b>Click and drag the mouse over the canvas.</b></i></span></p>
+
+
+			<ul >
+				<li>x1 <input type="number" max="500" min="0" id="x1"></li>
+
+
+				<li>y1 <input type="number" max="500" min="0" id="y1"></li>
+
+
+				<li>x2 <input type="number" max="500" min="0" id="x2"></li>
+
+
+				<li>y2 <input type="number" max="500" min="0" id="y2"></li>
+
+
+				<li style="list-style: none"><br>
+				</li>
+
+
+					<li><button id="Clear" onclick="clearR();">Clear</button>
+				</li>
+			</ul>
+			<br>
+		</section>
+
+
+		<div id="mycanholder">
+			<canvas height="500" id="myCanvas" width="500">
+				Your browser does not support the HTML5 canvas tag.
+			</canvas>
+		</div>
+	</div>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script>
+	      var holder = document.getElementById("mycanholder");
+	      var canvas = document.getElementById("myCanvas");
+	      var cntx = canvas.getContext("2d");
+				var offset = $("#myCanvas").offset();
+	      var canvasData = cntx.getImageData(0,0,canvas.width,canvas.height);
+	      clicked = false;
+	      dragging = false;
+	      var rect = canvas.getBoundingClientRect();
+				function canvasPosition(e) {
+						return {
+								x: parseInt(e.clientX - offset.left),
+								y: parseInt(e.clientY - offset.top)
+						};
+				}
+
+	      holder.onmousedown = function(e){
+	          var x1 = document.getElementById("x1");
+	          var y1 = document.getElementById("y1");
+						var pos = canvasPosition(e)
+	          x1.value = pos.x;
+	          y1.value = pos.y;
+	      };
+				holder.onmousemove = function(e){
+					this.style.cursor = "crosshair";
+					po2 = canvasPosition(e);
+					x2.value = po2.x;
+					y2.value = po2.y;
+				}
+
+	      holder.onmouseup = function(e){
+	              var x2 = document.getElementById("x2");
+	              var y2 = document.getElementById("y2");
+	              x2.value = e.clientX - rect.left;
+	              y2.value = e.clientY - rect.top;
+	              SubmitValue();
+	      };
+
+	      function clearR(){
+	          cntx.fillStyle = "white";
+	          cntx.fillRect(0,0,canvas.width,canvas.height);
+	          canvasData = cntx.getImageData(0,0,canvas.width,canvas.height);
+	      }
+
+
+	      function SubmitValue(){
+	          var x1 = parseInt(document.getElementById("x1").value);
+	          var y1 = parseInt(document.getElementById("y1").value);
+	          var x2 = parseInt(document.getElementById("x2").value);
+	          var y2 = parseInt(document.getElementById("y2").value);
+	          var temp;
+
+	          var dx = Math.abs(x1 - x2);
+	          var dy = Math.abs(y1 - y2);
+	          var slopegt1 = 0;
+	          var incry;
+
+	          if(dy > dx){
+	              temp = x1;
+	              x1 = y1;
+	              y1 = temp;
+	              temp = x2;
+	              x2 = y2;
+	              y2 = temp;
+	              temp = dy;
+	              dy = dx;
+	              dx = temp;
+	              slopegt1 = 1;
+
+	          }
+
+	          if(x1 > x2){
+	              temp = x1;
+	              x1 = x2;
+	              x2 = temp;
+	              temp = y1;
+	              y1 = y2;
+	              y2 = temp;
+	          }
+	          if(y1>y2)
+	              incry = -1;
+	          else
+	              incry = 1;
+
+	          var D = 2*dy - dx;
+	          var incre = 2*dy;
+	          var incrne = 2*(dy - dx);
+
+	          while(x1 < x2){
+	              if(D <= 0)
+	                  D+=incre;
+	              else{
+	                  D+=incrne;
+	                  y1+=incry;
+	              }
+	              x1++;
+	              if(slopegt1)
+	                  drawPixel(y1,x1,255,0,0,255);
+	              else
+	                  drawPixel(x1,y1,255,0,0,255);
+	          }
+
+	          cntx.putImageData(canvasData,0,0);
+	      }
+
+	      function drawPixel(x,y,r,g,b,a){
+	          var indx = (x + y * canvas.width)* 4;
+
+	          canvasData.data[indx + 0] = r;
+	          canvasData.data[indx + 1] = g;
+	          canvasData.data[indx + 2] = b;
+	          canvasData.data[indx + 3] = a;
+
+	      }
+	</script>
+</body>
+</html>

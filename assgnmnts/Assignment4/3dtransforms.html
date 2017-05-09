@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Assignment 4</title>
+    <link href="css/style2.css" rel="stylesheet" media="all" />
+		<meta charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/jquery-ui.min.css">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	</head>
+	<body>
+
+
+
+		<div class="outer" id="outer">
+      <div class="header">
+        <h3>Computer Graphics Assignment 4</h3>
+        <p>3D Tranforms</p>
+				<span>Drag the cube to control rotations</span>
+      </div>
+			<div class="inner" id="output"></div>
+			<div class="joys">
+				<div class="baseE"><div class="stickE"></div><div class="resBtn" onclick="resetTranslate();"><i class="fa fa-refresh"></i></div></div>
+
+			</div>
+
+    </div>
+		<div class="menu1">
+			<ul>
+				<li><i class="fa fa-home menuIcons"></i><button class = "menuIcons" onclick="window.location.assign('index.html')">Home</button></li>
+				<li><i class="fa fa-rotate-right menuIcons"></i><input class = "menuIcons" id="RotateZ" type="button" value="RotateZ"></li>
+				<li><i class="fa fa-expand xaxis menuIcons"></i><input class = "menuIcons" id="ScaleX" type="button" value="ScaleX"></li>
+				<li><i class="fa fa-expand yaxis menuIcons"></i><input class = "menuIcons" id="ScaleY" type="button" value="ScaleY"></li>
+				<li><i class="fa fa-expand menuIcons"></i><input class = "menuIcons" id="ScaleZ" type="button" value="ScaleZ"></li>
+				<li><i class="fa fa-expand menuIcons"></i><input class = "menuIcons" id="TranslateZ" type="button" value="TranslateZ"></li>
+				<li><i class="fa fa-lightbulb-o menuIcons"></i><input class = "menuIcons" id="LightIntensity" type="button" value="Lighting Intensity"/></li>
+				<li><i class="fa fa-play menuIcons"></i><button class = "menuIcons" id ='startStop' onclick="toggleAnimating($(this));">Start Animating</button></li>
+				<li><i class="fa fa-refresh menuIcons"></i><button class = "menuIcons" id ='resett' onclick="resetTransforms();">Reset</button></li>
+				<li><i class="fa fa-refresh menuIcons"></i><button class = "menuIcons" id ='resett' onclick="resetRotations();">Reset Rotation</button></li>
+				<li><i class="fa fa-refresh menuIcons"></i><button class = "menuIcons" id ='resett' onclick="resetScale();">Reset Scale</button></li>
+			</ul>
+		</div>
+		<script type='text/javascript' src="js/three.js"></script>
+
+		<script type='text/javascript' src="js/jquery320min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type='text/javascript' src="js/c2.js"></script>
+	</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+    body {
+        color: #cee0d0;
+        background: #136a8a;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #136a8a, #267871);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #136a8a, #267871);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    #Inputs {
+        padding: 10px;
+        width: 600px;
+
+    }
+    section{
+      margin:auto;
+    }
+    p.heading{
+      text-align: center;
+      font-size: 2em;
+      text-decoration: underline;
+
+    }
+    #myCanvas {
+        background-color: #eee;
+
+        box-shadow: 1px 1px 5px 1px black;
+        margin:auto;
+    }
+    ul {
+        list-style: none;
+    }
+    ul li {
+        padding: 5px;
+        display: inline;
+    }
+    ul li input {
+        font-weight: bold;
+        background-color: #f1f1f1;
+        color: #012222;
+        border: solid thin white;
+        font-size: 14px;
+    }
+    header {
+        text-align: center;
+        color: darkblue;
+        font-size: 3em;
+    }
+    div.outer {
+        margin: auto;
+        width: 800px;
+    }
+    input {
+        width: 50px;
+        font-weight: bold;
+        background-color: #f1f1f1;
+        color: #012222;
+        border: solid thin white;
+        font-size: 14px;
+    }
+    #back {
+        text-decoration: none;
+        background-color: #A2D1A1;
+        padding: 4px;
+        color: black;
+        border: outset medium grey;
+    }
+    #back:hover {
+        color: red;
+    }
+    button {
+        margin: 2px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    #Select{
+      text-align: center;
+    }
+
+    table tr td, table tr td input{
+      width:50px;
+    }
+    </style>
+  </head>
+
+
+
+  <body>
+    <div class="outer">
+      <section id="Inputs">
+          <p class="heading">Drawing a Rectangle</p>
+          <a id="back" href="index.html" style="margin-right:100px; font-weight:bold;">Back</a>
+          <p id="Select"> Enter Values below for Line<br> (x1, y1, x2, y2 are respective start and end points for line. ) Or<br>
+          <span style="color:#31311;text-shadow:0px 0px 3px black"><i><b>Click and drag the mouse over the canvas.</b></i></span> </p>
+
+          <ul>
+            <li> x1 <input id="x1"> y1 <input id="y1"></li>
+            <li> x2 <input id="x2"> y2 <input id="y2"></li>
+            <li> <button onClick="SubmitValue()"> Draw Rectangle </button>
+              <button id="Clear" onclick="clearR();">Clear</button></li>
+
+          </ul>
+
+          <canvas id="myCanvas" width="600" height="400"></canvas>
+          </section>
+
+    </div>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            var offset = $("#myCanvas").offset();
+            var X1 = document.getElementById("x1");
+            var Y1 = document.getElementById("y1");
+            var X2 = document.getElementById("x2");
+            var Y2 = document.getElementById("y2");
+            canvas.onmousemove = function(e){
+              this.style.cursor = "crosshair";
+
+            };
+            canvas.onmousedown = function(e){
+    						pos = canvasPosition(e);
+
+    						X1.value = pos.x;
+    						Y1.value = pos.y;
+    				};
+            canvas.onmouseup = function(e){
+              pos = canvasPosition(e);
+              if(Math.abs(X1.value - pos.x) > 10)
+                X2.value = pos.x;
+              if(Math.abs(Y1.value - pos.y) > 10)
+                Y2.value = pos.y;
+
+    					SubmitValue();
+    				}
+            function clearR(){
+    	          context.fillStyle = "white";
+    	          context.fillRect(0,0,canvas.width,canvas.height);
+    	          canvasData = context.getImageData(0,0,canvas.width,canvas.height);
+    	      }
+            function canvasPosition(e) {
+    						return {
+    								x: parseInt(e.clientX - offset.left),
+    								y: parseInt(e.clientY - offset.top)
+    						};
+    				}
+
+
+
+
+
+            function SubmitValue()
+            {
+
+
+                var x1 = parseInt(X1.value);
+                var y1 = parseInt(Y1.value);
+                var x2 = parseInt(X2.value);
+                var y2 = parseInt(Y2.value);
+
+                context.beginPath();
+                context.rect(x1, x2, y1, y2);
+                context.fillStyle = '#ffe';
+                context.fill();
+                context.lineWidth = 1;
+                context.strokeStyle = '#010101';
+                context.stroke();
+            }
+        </script>
+    </body>
+</html>
