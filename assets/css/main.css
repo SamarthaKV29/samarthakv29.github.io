@@ -1342,11 +1342,13 @@
 			}
 
 		#header .logo {
-			width: 5.5rem;
-			height: 5.5rem;
+			width: 8.5rem;
+			height: 8.5rem;
 			line-height: 5.5rem;
 			border: solid 1px #ffffff;
 			border-radius: 100%;
+			background-image: url('../../images/logo.PNG');
+			background-size: contain;
 		}
 
 			#header .logo .icon:before {
