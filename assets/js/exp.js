@@ -11,7 +11,18 @@ $(document).ready(function() {
   extract(head1);
 
   window.requestAnimFrame(dripp);
+  var oldtxt;
+  //$("#wrapper").append("<div class='overlayer'>Loading <img src='./images/loading.gif' width='16px' height='16px' /></div>");
+  $("#about, #about *").hide();
+  $("#about, #about *").children().each(function(index){
+    $(this).delay(200 * index).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(500);
+  });
+  setTimeout(function() {
+    $("#wrapper").children(".overlayer").fadeOut(2000);
+  }, 2000);
 });
+
+
 
 function extract(_textholder){
   var htext = _textholder.text();
