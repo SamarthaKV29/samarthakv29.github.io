@@ -1,1 +1,5 @@
-<?php header( 'Location: /index.html' ) ;  ?>
+<?php
+switch( $GET['url']){
+    defualt: header( 'Location: /index.html' ) ;  ?>
+}
+
