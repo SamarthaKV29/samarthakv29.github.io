@@ -1,5 +1,5 @@
 <?php
 switch( $GET['url']){
-    defualt: header( 'Location: /index.html' ) ;  ?>
+    default: header( 'Location: /index.html' ) ;  ?>
 }
 
