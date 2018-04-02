@@ -1516,22 +1516,22 @@ body.is-article-visible #footer {
 body.is-loading #footer {
 	opacity: 0;
 }
-#work .inner ul, #assgns .inner ul {
+#demos .inner ul, #work .inner ul, #assgns .inner ul {
 	list-style: none;
 	padding: 1%;
 }
-#work .inner ul li, #assgns .inner ul li {
+#demos .inner ul li, #work .inner ul li, #assgns .inner ul li {
 	padding: 0;
 	width: 100%;
 	display: inline-flex;
 }
-#work .inner ul li a, #assgns .inner ul li a {
+#demos .inner ul li a, #work .inner ul li a, #assgns .inner ul li a {
 	text-decoration: none;
 	border: thin solid white;
 	border-radius: 2px;
 	padding: 2%;
 }
-#work .inner ul li a:hover, #assgns .inner ul li a:hover {
+#demos .inner ul li a:hover, #work .inner ul li a:hover, #assgns .inner ul li a:hover {
 	background: rgba(200, 200, 225, 0.4);
 	color: rgba(210, 190, 15, 0.9);
 	border: none;
