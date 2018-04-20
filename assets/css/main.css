@@ -215,7 +215,7 @@ body {
 #about{
 
 }
-#about, #about *, #contact, #contact *{
+#about, #about *, #contact, #contact *, #work{
 	font-size: small;
 	color: rgba(120,230,236, 0.9);
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
