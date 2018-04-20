@@ -1026,7 +1026,10 @@ input[type="submit"], input[type="reset"], input[type="button"], button {
 }
 
 /* BG */
-
+#aboutdiv ul li{
+	list-style: disc !important;
+	color: lightgray;
+}
 #bg {
 	-moz-transform: scale(1.0);
 	-webkit-transform: scale(1.0);
