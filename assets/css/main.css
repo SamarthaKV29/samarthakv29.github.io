@@ -216,11 +216,10 @@ body {
 
 }
 #about, #about *, #contact, #contact *, #work{
-	font-size: small;
+	font-size: medium;
 	color: rgba(120,230,236, 0.9);
 }
 .aboutlist2 li{
-	font-size: 8px;
 	margin: 2px;
 	background-color: rgba(200,200,200, 0.1);
 	background-blend-mode: multiply;
@@ -341,7 +340,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 	line-height: 1.5;
 	margin: 0 0 1rem 0;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	letter-spacing: 0.2rem;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1234,7 +1233,7 @@ body.is-loading #bg:before {
 	margin-bottom: 0;
 }
 #header .content p {
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	letter-spacing: 0.2rem;
 	font-size: 0.8rem;
 	line-height: 2;
