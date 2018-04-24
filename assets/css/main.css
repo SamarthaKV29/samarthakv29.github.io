@@ -23,8 +23,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	display: block;
 }
 body {
-	line-height: 1;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	line-height: 1.2;
+	font-family: 'Guji', cursive;
 }
 body *{
 	transition: all 0.5s ease !important;
