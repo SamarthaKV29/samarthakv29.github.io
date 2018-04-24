@@ -22,12 +22,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+body, body *{
 	line-height: 1.2;
-	font-family: 'Guji', cursive;
-}
-body *{
-	transition: all 0.5s ease !important;
+	font-family: 'Inknut Antiqua', serif !important;
+	transition: height 0.5s ease !important;
+	transition: opacity 0.6s ease-in !important;
 }
 h1 {
 	display: inline-flex;
