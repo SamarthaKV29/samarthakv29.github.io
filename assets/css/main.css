@@ -24,7 +24,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 body {
 	line-height: 1;
-	font-family: 'Concert One' !important;
+	font-family: Georgia, 'Times New Roman', Times, serif;
 }
 h1 {
 	display: inline-flex;
@@ -218,7 +218,6 @@ body {
 #about, #about *, #contact, #contact *, #work{
 	font-size: small;
 	color: rgba(120,230,236, 0.9);
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .aboutlist2 li{
 	font-size: 8px;
@@ -311,7 +310,6 @@ html {
 }
 body, input, select, textarea {
 	color: #ffffff;
-	font-family: "Source Sans Pro", sans-serif;
 	font-weight: 300;
 	font-size: 1rem;
 	line-height: 1.65;
