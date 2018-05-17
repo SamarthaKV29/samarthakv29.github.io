@@ -23,6 +23,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 	display: block;
 }
 body, body *{
+
+/*-webkit-user-select: none;
+     -moz-user-select: -moz-none;
+      -ms-user-select: none;
+          user-select: none;*/
 	line-height: 1.2;
 	font-family: 'Inknut Antiqua', serif !important;
 	transition: height 0.5s ease !important;
