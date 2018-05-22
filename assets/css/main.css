@@ -237,10 +237,9 @@ a {
 	color: rgba(120,230,236, 0.9);
 }
 .aboutlist2 li{
-	margin: 2px;
+	margin: auto;
 	background-color: rgba(243, 242, 242, 0.158);
-	background-blend-mode: multiply;
-	padding: 1%;
+	padding: 2%;
 }
 
 .aboutlist li{
