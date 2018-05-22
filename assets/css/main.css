@@ -238,15 +238,15 @@ a {
 }
 .aboutlist2 li{
 	margin: 2px;
-	background-color: rgba(200,200,200, 0.1);
+	background-color: rgba(243, 242, 242, 0.158);
 	background-blend-mode: multiply;
-	padding: 0;
+	padding: 1%;
 }
 
 .aboutlist li{
 	margin: 2px;
 	list-style: none;
-	padding: 0;
+	padding: 1%;
 }
 
 ol, ul {
