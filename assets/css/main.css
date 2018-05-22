@@ -240,11 +240,13 @@ a {
 	margin: 2px;
 	background-color: rgba(200,200,200, 0.1);
 	background-blend-mode: multiply;
+	padding: 0;
 }
 
 .aboutlist li{
 	margin: 2px;
 	list-style: none;
+	padding: 0;
 }
 
 ol, ul {
