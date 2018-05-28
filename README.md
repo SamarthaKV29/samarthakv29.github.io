@@ -5,7 +5,7 @@
 
 ## Description
 This is a website created by me for hosting my projects and mainting my web profile. I have hosted it on:
-#### **host**: https://www.cs.uml.edu (**UMASS LOWELL CS DEPT Student Home /~svenkatr**)
+#### **host**: https://samarthakv29.github.io (**GITHUB**)
 #### **_mirror_**: https://personal-portfolio-samarth.herokuapp.com (**HEROKU server**)
 #### **stack**: _jquery_, _font-awesome_, **PHP**
 
