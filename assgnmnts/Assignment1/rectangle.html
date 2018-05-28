@@ -27,12 +27,14 @@
     }
     #myCanvas {
         background-color: #eee;
-
         box-shadow: 1px 1px 5px 1px black;
         margin:auto;
     }
     ul {
         list-style: none;
+        width:100%;
+        margin-left:0;
+        -webkit-padding-start: 0px !important;
     }
     ul li {
         padding: 5px;
@@ -84,6 +86,10 @@
     table tr td, table tr td input{
       width:50px;
     }
+    span{
+        color: orange;
+        text-shadow:0px 0px 5px black;
+    }
         </style>
     </head>
 
@@ -97,19 +103,21 @@
                     font-weight:bold;">Back</a>
                 <p id="Select"> Enter Values below for Line<br> (x1, y1, x2, y2
                     are respective start and end points for line. ) Or<br>
-                    <span style="color:#31311;text-shadow:0px 0px 3px black"><i><b>Click
+                    <span><i><b>Click
                                 and drag the mouse over the canvas.</b></i></span>
                 </p>
 
                 <ul>
                     <li> x1 <input id="x1"> y1 <input id="y1"></li>
                     <li> x2 <input id="x2"> y2 <input id="y2"></li>
-                    <li> <button onClick="SubmitValue()"> Draw Rectangle
-                        </button>
-                        <button id="Clear" onclick="clearR();">Clear</button></li>
+                    <li><button onClick="SubmitValue()"> Draw Rectangle</button></li>
+                    <li><button id="Clear" onclick="clearR(); rects= [];">Clear</button></li>
+                    <li><button id="" onclick="undoR();">Undo</button></li>
+                    <li><button id="" onclick="redoR();">Redo</button></li>
                 </ul>
 
                 <canvas id="myCanvas" width="600" height="400"></canvas>
+                <span id="mouseLoc">X: Y: </span>
             </section>
 
         </div>
@@ -122,10 +130,13 @@
             var Y1 = document.getElementById("y1");
             var X2 = document.getElementById("x2");
             var Y2 = document.getElementById("y2");
+
             canvas.onmousemove = function(e){
               this.style.cursor = "crosshair";
-
+              pos = canvasPosition(e);
+              $("span#mouseLoc").text("X: " + pos.x + " Y: " + pos.y);
             };
+
             canvas.onmousedown = function(e){
     						pos = canvasPosition(e);
 
@@ -138,42 +149,73 @@
                 X2.value = pos.x;
               if(Math.abs(Y1.value - pos.y) > 10)
                 Y2.value = pos.y;
-
     					SubmitValue();
     				}
             function clearR(){
+                  $("ul li input").val("");
     	          context.fillStyle = "white";
     	          context.fillRect(0,0,canvas.width,canvas.height);
     	          canvasData = context.getImageData(0,0,canvas.width,canvas.height);
     	      }
             function canvasPosition(e) {
-    						return {
-    								x: parseInt(e.clientX - offset.left),
-    								y: parseInt(e.clientY - offset.top)
-    						};
-    				}
-
-
-
-
-
-            function SubmitValue()
-            {
-
-
-                var x1 = parseInt(X1.value);
-                var y1 = parseInt(Y1.value);
-                var x2 = parseInt(X2.value);
-                var y2 = parseInt(Y2.value);
-
-                context.beginPath();
-                context.rect(x1, x2, y1, y2);
-                context.fillStyle = '#ffe';
-                context.fill();
-                context.lineWidth = 1;
-                context.strokeStyle = '#010101';
-                context.stroke();
+                offset = $("#myCanvas").offset();
+                    return {
+                            x: parseInt(e.clientX - offset.left),
+                            y: parseInt(e.clientY - offset.top)
+                    };
+                }
+            undos = [];
+            function undoR(){
+                undos.push(rects.pop());
+                redrawR();
+                
             }
+            function redoR(){
+                rects.push(undos.pop());
+                redrawR();
+            }
+            
+            var rects = [];
+            function randColor(){
+                    var letters = '0123456789ABCDEF';
+                    var color = '#';
+                    for (var i = 0; i
+            <6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+                }
+                function SubmitValue()
+                {
+                var x1= parseInt(X1.value);
+                var y1= parseInt(Y1.value);
+                var x2= parseInt(X2.value);
+                var y2= parseInt(Y2.value);
+                if(x1 != NaN && x2 != NaN && y1 != NaN && y2 != NaN){
+                console.log(x1,y1,x2-x1, y2-y1);
+                rects.push([x1, y1, x2-x1, y2-y1]);
+                redrawR();
+
+                }
+
+                }
+
+                function redrawR(){
+                clearR();
+                for(var i= 0; i <rects.length; i++){
+                drawR(rects[i]);
+                }
+                }
+                function drawR(rectv){
+                context.beginPath();
+                var vals= rectv;
+                context.rect(parseInt(rectv[0]), parseInt(rectv[1]),parseInt(rectv[2]),parseInt(rectv[3]));
+                context.fillStyle= randColor();
+                context.fill();
+                context.lineWidth= 0.3;
+                context.strokeStyle= '#010101';
+                context.stroke();
+                }
         </script>
     </body>
 </html>
