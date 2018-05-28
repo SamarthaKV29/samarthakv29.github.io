@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <style>
+    <head>
+        <style>
     body {
         color: #cee0d0;
         background: #136a8a;
@@ -84,32 +84,36 @@
     table tr td, table tr td input{
       width:50px;
     }
-    </style>
-  </head>
+        </style>
+    </head>
 
 
 
-  <body>
-    <div class="outer">
-      <section id="Inputs">
-          <p class="heading">Drawing a Rectangle</p>
-          <a id="back" href="index.html" style="margin-right:100px; font-weight:bold;">Back</a>
-          <p id="Select"> Enter Values below for Line<br> (x1, y1, x2, y2 are respective start and end points for line. ) Or<br>
-          <span style="color:#31311;text-shadow:0px 0px 3px black"><i><b>Click and drag the mouse over the canvas.</b></i></span> </p>
+    <body>
+        <div class="outer">
+            <section id="Inputs">
+                <p class="heading">Drawing a Rectangle</p>
+                <a id="back" href="index.html" style="margin-right:100px;
+                    font-weight:bold;">Back</a>
+                <p id="Select"> Enter Values below for Line<br> (x1, y1, x2, y2
+                    are respective start and end points for line. ) Or<br>
+                    <span style="color:#31311;text-shadow:0px 0px 3px black"><i><b>Click
+                                and drag the mouse over the canvas.</b></i></span>
+                </p>
 
-          <ul>
-            <li> x1 <input id="x1"> y1 <input id="y1"></li>
-            <li> x2 <input id="x2"> y2 <input id="y2"></li>
-            <li> <button onClick="SubmitValue()"> Draw Rectangle </button>
-              <button id="Clear" onclick="clearR();">Clear</button></li>
+                <ul>
+                    <li> x1 <input id="x1"> y1 <input id="y1"></li>
+                    <li> x2 <input id="x2"> y2 <input id="y2"></li>
+                    <li> <button onClick="SubmitValue()"> Draw Rectangle
+                        </button>
+                        <button id="Clear" onclick="clearR();">Clear</button></li>
+                </ul>
 
-          </ul>
+                <canvas id="myCanvas" width="600" height="400"></canvas>
+            </section>
 
-          <canvas id="myCanvas" width="600" height="400"></canvas>
-          </section>
-
-    </div>
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        </div>
+        <!--script src="https://code.jquery.com/jquery-1.9.1.min.js"></script-->
         <script>
             var canvas = document.getElementById('myCanvas');
             var context = canvas.getContext('2d');
