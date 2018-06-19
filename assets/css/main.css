@@ -37,7 +37,7 @@ h1 {
 	display: inline-flex;
 }
 .workmenu ul li {
-	list-style: none !important;
+	list-style: none;
 }
 a {
 	text-decoration: none !important;
@@ -245,7 +245,7 @@ a {
 }
 
 ol, ul {
-	list-style: none;
+	list-style: circle;
 }
 blockquote, q {
 	quotes: none;
@@ -782,7 +782,7 @@ ol li {
 	padding-left: 0.25em;
 }
 ul {
-	list-style: disc;
+	list-style: circle;
 	margin: 0 0 2rem 0;
 	padding-left: 1em;
 }
