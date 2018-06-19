@@ -42,6 +42,11 @@ h1 {
 a {
 	text-decoration: none !important;
 }
+#aboutdiv{
+	list-style-type: circle;
+	list-style: circle;
+	line-height: 20px;
+}
 .drippers {
 	text-transform: full-width;
 }
@@ -236,6 +241,7 @@ a {
 }
 .aboutlist2 li{
 	list-style: circle !important;
+	margin: 1%;
 }
 
 .aboutlist li{
@@ -1037,11 +1043,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 input[type="submit"], input[type="reset"], input[type="button"], button {
 	line-height: calc(2.75rem - 2px);
 }
-#aboutdiv{
-	list-style-type: circle;
-	list-style: circle;
-	line-height: 20px;
-}
+
 /* BG */
 #bg {
 	-moz-transform: scale(1.0);
@@ -1533,14 +1535,13 @@ body.is-article-visible #footer {
 body.is-loading #footer {
 	opacity: 0;
 }
-#demos .inner ul, #work .inner ul, #assgns .inner ul {
+#demos .inner ul, #assgns .inner ul {
 	list-style: none;
 	padding: 1%;
 }
 #demos .inner ul li, #work .inner ul li, #assgns .inner ul li {
-	padding: 0;
-	width: 100%;
-	display: inline-flex;
+	padding: 1%;
+	display: block;
 }
 #demos .inner ul li a, #work .inner ul li a, #assgns .inner ul li a {
 	text-decoration: none;
