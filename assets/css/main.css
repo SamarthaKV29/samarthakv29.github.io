@@ -1037,12 +1037,12 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 input[type="submit"], input[type="reset"], input[type="button"], button {
 	line-height: calc(2.75rem - 2px);
 }
-
-/* BG */
-#aboutdiv ul li{
-	list-style: disc !important;
-	color: lightgray;
+#aboutdiv{
+	list-style-type: circle;
+	list-style: circle;
+	line-height: 20px;
 }
+/* BG */
 #bg {
 	-moz-transform: scale(1.0);
 	-webkit-transform: scale(1.0);
