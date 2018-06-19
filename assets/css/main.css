@@ -1535,12 +1535,12 @@ body.is-article-visible #footer {
 body.is-loading #footer {
 	opacity: 0;
 }
-#demos .inner ul, #assgns .inner ul {
+#demos .inner ul, #work .inner ul, #assgns .inner ul {
 	list-style: none;
 	padding: 1%;
 }
 #demos .inner ul li, #work .inner ul li, #assgns .inner ul li {
-	padding: 1%;
+	padding: 2%;
 	display: block;
 }
 #demos .inner ul li a, #work .inner ul li a, #assgns .inner ul li a {
