@@ -240,7 +240,7 @@ a {
 
 .aboutlist li{
 	margin: 2px;
-	list-style: circle;
+	list-style: circle !important;
 	padding: 1%;
 }
 
