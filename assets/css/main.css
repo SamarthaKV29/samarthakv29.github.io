@@ -240,14 +240,15 @@ a {
 	color: rgba(120,230,236, 0.9);
 }
 .aboutlist2 li{
-	list-style: circle !important;
-	margin: 1%;
+	list-style: circle;
+	margin: 2px auto;
+	padding: 2%;
 }
 
 .aboutlist li{
-	margin: 2px;
-	list-style: circle !important;
-	padding: 1%;
+	margin: 2px auto;
+	padding: 2%;
+	list-style: circle;
 }
 
 ol, ul {
