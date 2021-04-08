@@ -1,161 +1,180 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <style>
-        body {
-        color: #cee0d0;
-        background: #136a8a;
-        /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #136a8a, #267871);
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #136a8a, #267871);
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        }
-        #Inputs {
-        padding: 10px;
-        width: 600px;
+<head>
+
+  <style>
+    body {
+      color: #cee0d0;
+      background: #136a8a;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to left, #136a8a, #267871);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to left, #136a8a, #267871);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    #Inputs {
+      padding: 10px;
+      width: 600px;
+
+    }
+
+    p.heading {
+      text-align: center;
+      font-size: 2em;
+      text-decoration: underline;
+
+    }
+
+    #canvas {
+      background-color: #eee;
+
+      box-shadow: 1px 1px 5px 1px black;
+      margin: auto;
+      width: 300px;
+    }
+
+    ul {
+      list-style: none;
+      width: 500px;
+      margin: auto;
+    }
+
+    ul li {
+      padding: 5px;
+      display: inline;
+      ;
+    }
+
+    ul li input {
+      font-weight: bold;
+      background-color: #f1f1f1;
+      color: #012222;
+      border: solid thin white;
+      font-size: 14px;
+    }
+
+    header {
+      text-align: center;
+      color: darkblue;
+      font-size: 3em;
+    }
+
+    div.outer {
+      margin: auto;
+      width: 800px;
+    }
+
+    input {
+      width: 50px;
+      font-weight: bold;
+      background-color: #f1f1f1;
+      color: #012222;
+      border: solid thin white;
+      font-size: 14px;
+    }
+
+    #back {
+      text-decoration: none;
+      background-color: #A2D1A1;
+      padding: 4px;
+      color: black;
+      border: outset medium grey;
+    }
+
+    #back:hover {
+      color: red;
+    }
+
+    button {
+      margin: 2px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    #Select {
+      text-align: center;
+    }
+
+    table tr td,
+    table tr td input {
+      width: 50px;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
+  </script>
+  <script>
+    function clearR() {
+      contxt = $("#canvas")[0].getContext("2d");
+      contxt.fillStyle = "#eee";
+      contxt.translate(-150, -150);
+      contxt.fillRect(0, 0, $("#canvas")[0].width, $("#canvas")[0].height);
+    }
+    function DrawPoly() {
+
+      var sides = document.getElementsByName("side");
+      for (var i = 0, length = sides.length; i < length; i++) {
+        if (sides[i].checked) {
+          side = sides[i].value;
 
         }
+      }
 
-        p.heading{
-        text-align: center;
-        font-size: 2em;
-        text-decoration: underline;
+      $(document).ready(function () {
+        var canvas = $("#canvas")[0];
+        var context = canvas.getContext("2d");
 
-        }
-        #canvas {
-        background-color: #eee;
+        polygon(context, 150, 150, 100, side);
+        context.stroke();
+      });
 
-        box-shadow: 1px 1px 5px 1px black;
-        margin:auto;
-        width:300px;
-        }
-        ul {
-        list-style: none;
-        width: 500px;
-        margin:auto;
-        }
-        ul li {
-        padding: 5px;
-        display: inline;;
-        }
-        ul li input {
-        font-weight: bold;
-        background-color: #f1f1f1;
-        color: #012222;
-        border: solid thin white;
-        font-size: 14px;
-        }
-        header {
-        text-align: center;
-        color: darkblue;
-        font-size: 3em;
-        }
-        div.outer {
-        margin: auto;
-        width: 800px;
-        }
-        input {
-        width: 50px;
-        font-weight: bold;
-        background-color: #f1f1f1;
-        color: #012222;
-        border: solid thin white;
-        font-size: 14px;
-        }
-        #back {
-        text-decoration: none;
-        background-color: #A2D1A1;
-        padding: 4px;
-        color: black;
-        border: outset medium grey;
-        }
-        #back:hover {
-        color: red;
-        }
-        button {
-        margin: 2px;
-        font-size: 14px;
-        font-weight: bold;
-        }
-        #Select{
-        text-align: center;
-        }
+      function polygon(ctx, x, y, radius, sides) {
 
-        table tr td, table tr td input{
-        width:50px;
+        if (sides < 3) return;
+        var a = ((Math.PI * 2) / sides);
+        ctx.beginPath();;
+        ctx.translate(x, y);
+        ctx.moveTo(radius, 0);
+        for (var i = 1; i < sides; i++) {
+          ctx.lineTo(radius * Math.cos(a * i), radius * Math.sin(a * i));
         }
-        </style>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
-        </script>
-        <script>
-        function clearR(){
-          contxt = $("#canvas")[0].getContext("2d");
-          contxt.fillStyle = "#eee";
-          contxt.translate(-150,-150);
-          contxt.fillRect(0,0,$("#canvas")[0].width, $("#canvas")[0].height);
-        }
-        function DrawPoly() {
+        ctx.closePath();
+        clearR();
+      }
+    }
+  </script>
+  <title>
+  </title>
+</head>
 
-            var sides = document.getElementsByName("side");
-            for (var i = 0, length = sides.length; i < length; i++) {
-              if (sides[i].checked) {
-                side = sides[i].value;
+<body>
 
-              }
-            }
-
-            $(document).ready(function() {
-                var canvas = $("#canvas")[0];
-                var context = canvas.getContext("2d");
-
-                polygon(context, 150, 150, 100, side);
-                context.stroke();
-            });
-
-            function polygon(ctx, x, y, radius, sides) {
-
-                if (sides < 3) return;
-                var a = ((Math.PI * 2) / sides);
-                ctx.beginPath();;
-                ctx.translate(x, y);
-                ctx.moveTo(radius, 0);
-                for (var i = 1; i < sides; i++) {
-                    ctx.lineTo(radius * Math.cos(a * i), radius * Math.sin(a * i));
-                }
-                ctx.closePath();
-                clearR();
-            }
-        }
-        </script>
-        <title>
-        </title>
-    </head>
-    <body>
-
-        <div class="outer">
-          <p class="heading">
-            Drawing a polygon
-          </p>
-          <a id="back" href="index.html" style="margin-right:100px; font-weight:bold;">Back</a>
-          <p style="text-align:center"><span style="color:#31311;text-shadow:0px 0px 3px black"><i><b>Select the number of sides</b></i></span></p>
-          <section>
-              <ul>
-              <li><input type="radio" value="5" name="side" onclick="DrawPoly();">5</input></li>
-              <li><input type="radio" value="6" name="side" onclick="DrawPoly();">6</input></li>
-              <li><input type="radio" value="7" name="side" onclick="DrawPoly();">7</input></li>
-              <li><input type="radio" value="8" name="side" onclick="DrawPoly();">8</input></li>
-              <li><input type="radio" value="9" name="side" onclick="DrawPoly();">9</input></li>
-              <li><input type="radio" value="10" name="side" onclick="DrawPoly();">10</input></li>
-            </ul><hr>
-            <center>
-              <canvas height="300" id="canvas" width="300" style="border:thin solid black">
-                  OOPS.. Upgrade your Browser
-              </canvas>
-          </section>
-        </div>
+  <div class="outer">
+    <p class="heading">
+      Drawing a polygon
+    </p>
+    <a id="back" href="index.html" style="margin-right:100px; font-weight:bold;">Back</a>
+    <p style="text-align:center"><span style="color:#31311;text-shadow:0px 0px 3px black"><i><b>Select the number of
+            sides</b></i></span></p>
+    <section>
+      <ul>
+        <li><input type="radio" value="5" name="side" onclick="DrawPoly();">5</input></li>
+        <li><input type="radio" value="6" name="side" onclick="DrawPoly();">6</input></li>
+        <li><input type="radio" value="7" name="side" onclick="DrawPoly();">7</input></li>
+        <li><input type="radio" value="8" name="side" onclick="DrawPoly();">8</input></li>
+        <li><input type="radio" value="9" name="side" onclick="DrawPoly();">9</input></li>
+        <li><input type="radio" value="10" name="side" onclick="DrawPoly();">10</input></li>
+      </ul>
+      <hr>
+      <center>
+        <canvas height="300" id="canvas" width="300" style="border:thin solid black">
+          OOPS.. Upgrade your Browser
+        </canvas>
+    </section>
+  </div>
 
 
-    </body>
+</body>
+
 </html>
