@@ -1,4 +1,0 @@
-RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteRule ^[a-zA-Z]{3,10}/(.*)$ $1 [R=301,L]
